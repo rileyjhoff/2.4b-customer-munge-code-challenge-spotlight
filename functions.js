@@ -62,7 +62,16 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-  return true;
+  const totalOfEachGender = customers.reduce((acc, curr) => {
+    // eslint-disable-next-line keyword-spacing
+    if (acc[curr.gender]) {
+      acc[curr.gender]++;
+    } else {
+      acc[curr.gender] = 1;
+    }
+    return acc;
+  }, {});
+  return totalOfEachGender;
 }
 
 /* 
