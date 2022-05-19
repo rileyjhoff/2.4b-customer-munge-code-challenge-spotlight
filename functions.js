@@ -4,8 +4,11 @@ Output:
 */
 
 export function greetUsers(customers) {
-     // just map over them to make a greeting
-    return true;
+  // just map over them to make a greeting
+  const greetings = customers.map(
+    (customer) => `Hello ${customer.first_name} ${customer.last_name}`
+  );
+  return greetings;
 }
 
 /* 
@@ -14,11 +17,10 @@ Output:
 */
 
 export function greetUsersOverAge60(customers) {
-    return customers
-        // first, filter over the user to get the ones over 60
-        // then map over them to make a greeting
+  return customers;
+  // first, filter over the user to get the ones over 60
+  // then map over them to make a greeting
 }
-
 
 /* 
 Output: 
@@ -26,8 +28,8 @@ Output:
 */
 
 export function addAllAges(customers) {
-    // reduce through the customers to make a sum
-    return true;
+  // reduce through the customers to make a sum
+  return true;
 }
 
 /* 
@@ -36,10 +38,10 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    // map through to make an array of cool factors
-    // then reduce through that array to get a sum
-    // then divide by the total number of customers
-    return true;
+  // map through to make an array of cool factors
+  // then reduce through that array to get a sum
+  // then divide by the total number of customers
+  return true;
 }
 
 /* 
@@ -53,7 +55,7 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -67,7 +69,7 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -88,7 +90,7 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -101,9 +103,8 @@ Output:
 }
 */
 
-
 export function getAllCoolFactorsOfEachCar(customers) {
-    return true;
+  return true;
 }
 
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
@@ -111,7 +112,6 @@ export function getAllCoolFactorsOfEachCar(customers) {
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
-
 
 /* 
 Output: 
@@ -123,9 +123,8 @@ Output:
 */
 
 export function getAverageCoolFactorOfEachCar(customers) {
-    return true;
+  return true;
 }
-
 
 /* 
 Output: 
@@ -145,7 +144,7 @@ Output:
 */
 
 export function makeAgeBrackets(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -162,9 +161,8 @@ Output:
 */
 
 export function getCoolFactorsByAgeBracket(customers) {
-    return true;
+  return true;
 }
-
 
 /* 
 Output: 
@@ -181,6 +179,5 @@ Output:
 */
 
 export function getAverageCoolFactorByAgeBracket(customers) {
-    return true;
+  return true;
 }
-
