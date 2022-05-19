@@ -1,3 +1,4 @@
+/* eslint-disable keyword-spacing */
 /* 
 Output: 
 ['Hello Suzie Summerson!', 'Hello Cacilia Caramuscia', 'Hello Mattie Mungane' etc]
@@ -63,7 +64,6 @@ Output:
 
 export function getTotalOfEachGender(customers) {
   const totalOfEachGender = customers.reduce((acc, curr) => {
-    // eslint-disable-next-line keyword-spacing
     if (acc[curr.gender]) {
       acc[curr.gender]++;
     } else {
@@ -88,7 +88,6 @@ export function getGenderBreakdownOfFordOwners(customers) {
   const genderBreakdownOfFordOwners = customers
     .filter((customer) => customer.car_make === 'Ford')
     .reduce((acc, curr) => {
-      // eslint-disable-next-line keyword-spacing
       if (acc[curr.gender]) {
         acc[curr.gender]++;
       } else {
@@ -117,7 +116,29 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-  return true;
+  const getGenderBreakdownOfEachCar = customers.reduce((acc1, curr1) => {
+    // if (acc[curr.car_make]) {
+    //   if (acc[curr.car_make][curr.gender]) {
+    //     acc[curr.car_make][curr.gender]++;
+    //   } else {
+    //     acc[curr.car_make][curr.gender] = 1;
+    //   }
+    // }
+    if (!acc1[curr1.car_make]) {
+      acc1[curr1.car_make] = customers
+        .filter((customer) => curr1.car_make === customer.car_make)
+        .reduce((acc2, curr2) => {
+          if (acc2[curr2.gender]) {
+            acc2[curr2.gender]++;
+          } else {
+            acc2[curr2.gender] = 1;
+          }
+          return acc2;
+        }, {});
+    }
+    return acc1;
+  }, {});
+  return getGenderBreakdownOfEachCar;
 }
 
 /* 
