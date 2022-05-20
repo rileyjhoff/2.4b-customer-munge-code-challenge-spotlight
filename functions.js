@@ -1,11 +1,15 @@
+/* eslint-disable keyword-spacing */
 /* 
 Output: 
 ['Hello Suzie Summerson!', 'Hello Cacilia Caramuscia', 'Hello Mattie Mungane' etc]
 */
 
 export function greetUsers(customers) {
-     // just map over them to make a greeting
-    return true;
+  // just map over them to make a greeting
+  const greetings = customers.map(
+    (customer) => `Hello ${customer.first_name} ${customer.last_name}`
+  );
+  return greetings;
 }
 
 /* 
@@ -14,11 +18,13 @@ Output:
 */
 
 export function greetUsersOverAge60(customers) {
-    return customers
-        // first, filter over the user to get the ones over 60
-        // then map over them to make a greeting
+  const greetings = customers
+    .filter((customer) => customer.age > 60)
+    .map((customer) => `Hello ${customer.first_name} ${customer.last_name}!`);
+  return greetings;
+  // first, filter over the user to get the ones over 60
+  // then map over them to make a greeting
 }
-
 
 /* 
 Output: 
@@ -26,8 +32,9 @@ Output:
 */
 
 export function addAllAges(customers) {
-    // reduce through the customers to make a sum
-    return true;
+  // reduce through the customers to make a sum
+  const sum = customers.reduce((acc, customer) => acc + customer.age, 0);
+  return sum;
 }
 
 /* 
@@ -36,10 +43,13 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    // map through to make an array of cool factors
-    // then reduce through that array to get a sum
-    // then divide by the total number of customers
-    return true;
+  // map through to make an array of cool factors
+  // then reduce through that array to get a sum
+  // then divide by the total number of customers
+  const avgCoolFactor =
+    customers.reduce((acc, curr) => acc + curr.cool_factor, 0) /
+    customers.length;
+  return avgCoolFactor;
 }
 
 /* 
@@ -53,7 +63,15 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+  const totalOfEachGender = customers.reduce((acc, curr) => {
+    if (acc[curr.gender]) {
+      acc[curr.gender]++;
+    } else {
+      acc[curr.gender] = 1;
+    }
+    return acc;
+  }, {});
+  return totalOfEachGender;
 }
 
 /* 
@@ -67,7 +85,17 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+  const genderBreakdownOfFordOwners = customers
+    .filter((customer) => customer.car_make === 'Ford')
+    .reduce((acc, curr) => {
+      if (acc[curr.gender]) {
+        acc[curr.gender]++;
+      } else {
+        acc[curr.gender] = 1;
+      }
+      return acc;
+    }, {});
+  return genderBreakdownOfFordOwners;
 }
 
 /* 
@@ -88,7 +116,22 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-    return true;
+  const genderBreakdownOfEachCar = customers.reduce((acc1, curr1) => {
+    if (!acc1[curr1.car_make]) {
+      acc1[curr1.car_make] = customers
+        .filter((customer) => curr1.car_make === customer.car_make)
+        .reduce((acc2, curr2) => {
+          if (acc2[curr2.gender]) {
+            acc2[curr2.gender]++;
+          } else {
+            acc2[curr2.gender] = 1;
+          }
+          return acc2;
+        }, {});
+    }
+    return acc1;
+  }, {});
+  return genderBreakdownOfEachCar;
 }
 
 /* 
@@ -101,9 +144,16 @@ Output:
 }
 */
 
-
 export function getAllCoolFactorsOfEachCar(customers) {
-    return true;
+  const allCoolFactorsOfEachCar = customers.reduce((acc, curr) => {
+    if (acc[curr.car_make]) {
+      acc[curr.car_make].push(curr.cool_factor);
+    } else {
+      acc[curr.car_make] = [curr.cool_factor];
+    }
+    return acc;
+  }, {});
+  return allCoolFactorsOfEachCar;
 }
 
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
@@ -111,7 +161,6 @@ export function getAllCoolFactorsOfEachCar(customers) {
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
-
 
 /* 
 Output: 
@@ -123,9 +172,22 @@ Output:
 */
 
 export function getAverageCoolFactorOfEachCar(customers) {
-    return true;
+  const averageCoolFactorOfEachCar = customers.reduce((acc1, curr1) => {
+    if (!acc1[curr1.car_make]) {
+      acc1[curr1.car_make] =
+        customers
+          .filter((customer) => curr1.car_make === customer.car_make)
+          .reduce((acc2, curr2, index) => {
+            acc2 = acc2 + curr2.cool_factor;
+            return acc2;
+          }, 0) /
+        customers.filter((customer) => curr1.car_make === customer.car_make)
+          .length;
+    }
+    return acc1;
+  }, {});
+  return averageCoolFactorOfEachCar;
 }
-
 
 /* 
 Output: 
@@ -145,7 +207,7 @@ Output:
 */
 
 export function makeAgeBrackets(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -162,9 +224,8 @@ Output:
 */
 
 export function getCoolFactorsByAgeBracket(customers) {
-    return true;
+  return true;
 }
-
 
 /* 
 Output: 
@@ -181,6 +242,5 @@ Output:
 */
 
 export function getAverageCoolFactorByAgeBracket(customers) {
-    return true;
+  return true;
 }
-
