@@ -116,14 +116,7 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-  const getGenderBreakdownOfEachCar = customers.reduce((acc1, curr1) => {
-    // if (acc[curr.car_make]) {
-    //   if (acc[curr.car_make][curr.gender]) {
-    //     acc[curr.car_make][curr.gender]++;
-    //   } else {
-    //     acc[curr.car_make][curr.gender] = 1;
-    //   }
-    // }
+  const genderBreakdownOfEachCar = customers.reduce((acc1, curr1) => {
     if (!acc1[curr1.car_make]) {
       acc1[curr1.car_make] = customers
         .filter((customer) => curr1.car_make === customer.car_make)
@@ -138,7 +131,7 @@ export function getGenderBreakdownOfEachCar(customers) {
     }
     return acc1;
   }, {});
-  return getGenderBreakdownOfEachCar;
+  return genderBreakdownOfEachCar;
 }
 
 /* 
@@ -152,7 +145,15 @@ Output:
 */
 
 export function getAllCoolFactorsOfEachCar(customers) {
-  return true;
+  const getAllCoolFactorsOfEachCar = customers.reduce((acc, curr) => {
+    if (acc[curr.car_make]) {
+      acc[curr.car_make].push(curr.cool_factor);
+    } else {
+      acc[curr.car_make] = [curr.cool_factor];
+    }
+    return acc;
+  }, {});
+  return getAllCoolFactorsOfEachCar;
 }
 
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
