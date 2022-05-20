@@ -145,7 +145,7 @@ Output:
 */
 
 export function getAllCoolFactorsOfEachCar(customers) {
-  const getAllCoolFactorsOfEachCar = customers.reduce((acc, curr) => {
+  const allCoolFactorsOfEachCar = customers.reduce((acc, curr) => {
     if (acc[curr.car_make]) {
       acc[curr.car_make].push(curr.cool_factor);
     } else {
@@ -153,7 +153,7 @@ export function getAllCoolFactorsOfEachCar(customers) {
     }
     return acc;
   }, {});
-  return getAllCoolFactorsOfEachCar;
+  return allCoolFactorsOfEachCar;
 }
 
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
@@ -172,7 +172,21 @@ Output:
 */
 
 export function getAverageCoolFactorOfEachCar(customers) {
-  return true;
+  const averageCoolFactorOfEachCar = customers.reduce((acc1, curr1) => {
+    if (!acc1[curr1.car_make]) {
+      acc1[curr1.car_make] =
+        customers
+          .filter((customer) => curr1.car_make === customer.car_make)
+          .reduce((acc2, curr2, index) => {
+            acc2 = acc2 + curr2.cool_factor;
+            return acc2;
+          }, 0) /
+        customers.filter((customer) => curr1.car_make === customer.car_make)
+          .length;
+    }
+    return acc1;
+  }, {});
+  return averageCoolFactorOfEachCar;
 }
 
 /* 
